@@ -14,3 +14,6 @@ orientation = portrait
 
 [buildozer]
 log_level = 2
+   android.api = 33
+   android.build_tools_version = 33.0.2
+   android.accept_android_licenses = True
