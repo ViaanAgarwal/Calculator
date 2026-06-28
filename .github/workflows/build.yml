@@ -4,16 +4,14 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build with Buildozer
-        run: |
-          docker run --rm \
-            --volume "${{ github.workspace }}":/home/user/hostcwd \
-            --env BUILDOZER_WARN_ON_ROOT=0 \
-            kivy/buildozer:1.5.0 \
-            bash -c "yes | buildozer android debug"
+      - name: Build with Buildozer Action
+        uses: ArtemSBulgakov/buildozer-action@v1
+        with:
+          command: buildozer android debug
+          buildozer_version: stable
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
