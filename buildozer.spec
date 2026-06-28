@@ -1,19 +1,16 @@
-name: Build APK
-on: [push]
-jobs:
-  build:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Build with Buildozer Docker
-        run: |
-          docker run --rm \
-            --volume "${{ github.workspace }}":/home/user/hostcwd \
-            --env BUILDOZER_WARN_ON_ROOT=0 \
-            kivy/buildozer:latest android debug
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: calculator-apk
-          path: bin/*.apk
+[app]
+title = Calculator
+package.name = calculator
+package.domain = org.test
+source.dir =.
+source.include_exts = py,png,jpg,kv,atlas
+version = 0.1
+requirements = python3,kivy
+android.build_tools_version = 33.0.2
+android.api = 33
+android.archs = arm64-v8a,armeabi-v7a
+android.accept_android_license = True
+orientation = portrait
+
+[buildozer]
+log_level = 2
