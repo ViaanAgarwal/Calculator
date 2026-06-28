@@ -10,7 +10,7 @@ jobs:
       - name: Build APK with Buildozer
         uses: Diginode/buildozer-action@v2
         with:
-          workdir:.
+          workdir:
           buildozer_version: stable
           
       - name: Upload APK
