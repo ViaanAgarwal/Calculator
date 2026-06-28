@@ -4,14 +4,13 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Build with Buildozer Action
-        uses: ArtemSBulgakov/buildozer-action@v1
+      - name: Build with Buildozer
+        uses: digisecmedia/buildozer-action@v1
         with:
-          command: buildozer android debug
-          buildozer_version: stable
+          buildozer-cmd: buildozer android debug
+          work-dir:.
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
