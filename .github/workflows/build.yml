@@ -2,18 +2,18 @@ name: Build APK
 on: [push]
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build with Buildozer
-        uses: digisecmedia/buildozer-action@v1
+      - name: Build APK
+        uses: digreatbrian/buildozer-action@v2
         with:
-          buildozer-cmd: buildozer android debug
-          work-dir: .
+          python-version: 3.8
+          buildozer-cmd: buildozer -v android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: calculator-apk
-          path: bin/*.apk
+          name: package
+          path: ./bin/*.apk
